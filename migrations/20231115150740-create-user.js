@@ -32,4 +32,4 @@ module.exports = {
     await queryInterface.dropTable('Users');
   }
 };
-dd
+test
