@@ -94,13 +94,17 @@ router.put('/:id/avatar', async function(req, res, next) {
 
 router.delete('/:id', async function(req, res, next) {
   try{
-  const {name,phone,avatar} = req.body
+  const deleteUser = await models.User.findOne({
+    where : {
+      id :req.params.id
+    }
+  });
   const user = await models.User.destroy({
     where: {
       id: req.params.id
     }
   });
-  res.json(user)
+  res.json(deleteUser)
 }catch(err){
   console.log('ini error',err)
   res.json(err)
